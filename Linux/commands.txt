@@ -1,0 +1,48 @@
+# Просмотр статуса
+# Подробнее о ufw: https://selectel.ru/blog/tutorials/how-to-configure-firewall-with-ufw-on-ubuntu-20/
+sudo ufw status verbose
+sudo ufw status
+
+# Удаление конкретного статуса
+sudo ufw delete allow 5120/tcp 
+
+
+# Перезагрузка службы ssh после внесения измений в /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
+
+# Вывод содержимого файла
+sudo cat /etc/ssh/sshd_config
+
+# Список файлов в текущей директории
+ls
+
+# Путь до текущей директории
+pwd
+
+# Переход по директориям
+cd
+
+# Редактирование файла /etc/ssh/sshd_config
+# Подробнее о vim: 
+vim /etc/ssh/sshd_config
+
+
+# Инфа о пользователях и датах последнего входа
+lastlog
+
+# Инфа о текущем пользователе
+id
+
+# Добавить правило c комментарием
+sudo ufw allow 22/tcp comment 'SshRemote'
+
+# Удаление правила
+sudo ufw delete deny 5105/tcp
+
+
+# Копирование файла 'gitlab.rb' и сохранение его в той же директории с именем 'gitlab.rb.backup'
+sudo cp gitlab.rb gitlab.rb.backup
+
+# Переконфигурирование гитлаба после измения файла /etc/gitlab/gitlab.rb
+sudo gitlab-ctl reconfigure
