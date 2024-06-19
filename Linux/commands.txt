@@ -46,3 +46,59 @@ sudo cp gitlab.rb gitlab.rb.backup
 
 # Переконфигурирование гитлаба после измения файла /etc/gitlab/gitlab.rb
 sudo gitlab-ctl reconfigure
+
+# Получить информацию о системе 
+hostnamectl
+
+
+
+
+==============================
+nmcli
+==============================
+# Получить статус девайсов
+nmcli device status
+
+#
+sudo systemctl restart NetworkManager
+
+
+
+
+
+ Run "resolvectl status" to see details about the uplink DNS servers
+# currently in use.
+
+
+# Запустить systemd-resolved 
+sudo systemctl start systemd-resolved
+
+
+
+# Как использовать dns сервера, получаемые от DHCP
+# На основании 
+# 1. https://askubuntu.com/questions/973017/wrong-nameserver-set-by-resolvconf-and-networkmanager
+# 2. https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1624320/comments/8
+# Достаточно удалить одну символьную ссылку и добавить другую
+ls -la /etc/resolv.conf
+sudo rm -f /etc/resolv.conf
+sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+ls -la /etc/resolv.conf
+
+
+# Редактирование sudo юзеров
+sudo visudo
+
+
+# Установка пакета apache2 с автоподтверждением
+# -y отвечает за согласие на изменение дискового пространства
+apt install apache2 -y
+
+
+# Посмотреть запущенные поды
+sudo microk8s kubectl get pods
+
+
+
+# Подказка по работе с утилитой управления элмой
+elma365ctl --help
