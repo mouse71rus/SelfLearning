@@ -102,3 +102,28 @@ sudo microk8s kubectl get pods
 
 # Подказка по работе с утилитой управления элмой
 elma365ctl --help
+
+apt update
+apt install cifs-utils
+# Установка утилиты cifs-utils
+
+apt-get remove veeam veeam-libs veeamsnap
+# Удаление агента VeeamBackup
+# Подробнее: https://helpcenter.veeam.com/docs/agentforlinux/userguide/uninstallation_process.html?ver=60
+
+usermod -aG docker dockerUser
+# Добавить пользователя dockerUser в группу docker 
+# Аргумент -aG отвечает за добавление новой группы пользователю, а не за изменение его группы
+
+
+sudo passwd 
+# Изменить пароль текущему пользователю
+
+sudo passwd dockerUser
+# Изменить пароль пользователю dockerUser
+
+df -h
+# Выводит список виртуальные файловых систем
+
+fdisk -l
+# Выводит информацию о дисках
