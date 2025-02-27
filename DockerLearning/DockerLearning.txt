@@ -71,6 +71,17 @@ docker restart 52ec4c408062
 docker pull mikolatero/vlmcsd
 # Вытянуть образ из хаба.
 
+docker images -f dangling=true
+# Показать untagged образы
+# https://www.cherryservers.com/blog/how-to-remove-docker-images
 
+docker image prune -f
+# Удалить все untagged образы
+# -f означает удаление без подтверждения
+# https://www.cherryservers.com/blog/how-to-remove-docker-images
 
+docker system df
+# Посмотреть использованное пространство
 
+docker builder prune
+# Удалить билд кэш
