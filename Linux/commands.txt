@@ -127,3 +127,13 @@ df -h
 
 fdisk -l
 # Выводит информацию о дисках
+
+free -h
+# Выводит информацию об оперативной памяти
+# Подробнее: https://ipcalc.co/blog/5-komand-dlya-proverki-ispolzovaniya-pamyati-v-linux/
+
+dmidecode --type 19
+# Получить информацию об установленных оперативных планках
+
+cat //proc/meminfo | head -n 3
+# Выводит информацию об оперативной памяти
