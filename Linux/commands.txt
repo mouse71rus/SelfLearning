@@ -28,12 +28,6 @@ cd
 vim /etc/ssh/sshd_config
 
 
-# Инфа о пользователях и датах последнего входа
-lastlog
-
-# Инфа о текущем пользователе
-id
-
 # Добавить правило c комментарием
 sudo ufw allow 22/tcp comment 'SshRemote'
 
@@ -86,8 +80,34 @@ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 ls -la /etc/resolv.conf
 
 
-# Редактирование sudo юзеров
+==============================
+Работа с пользователем
+==============================
+
 sudo visudo
+# Редактирование sudo юзеров
+
+lastlog
+# Инфа о пользователях и датах последнего входа
+
+id
+# Инфа о текущем пользователе
+
+usermod -aG docker dockerUser
+# Добавить пользователя dockerUser в группу docker 
+# Аргумент -aG отвечает за добавление новой группы пользователю, а не за изменение его группы
+
+sudo passwd 
+# Изменить пароль текущему пользователю
+
+sudo passwd dockerUser
+# Изменить пароль пользователю dockerUser
+
+su - docker
+# Войти в систему под пользователем docker
+
+sed 's/:.*//' /etc/passwd
+# Просмотр списка пользователей
 
 
 # Установка пакета apache2 с автоподтверждением
@@ -111,16 +131,7 @@ apt-get remove veeam veeam-libs veeamsnap
 # Удаление агента VeeamBackup
 # Подробнее: https://helpcenter.veeam.com/docs/agentforlinux/userguide/uninstallation_process.html?ver=60
 
-usermod -aG docker dockerUser
-# Добавить пользователя dockerUser в группу docker 
-# Аргумент -aG отвечает за добавление новой группы пользователю, а не за изменение его группы
 
-
-sudo passwd 
-# Изменить пароль текущему пользователю
-
-sudo passwd dockerUser
-# Изменить пароль пользователю dockerUser
 
 df -h
 # Выводит список виртуальные файловых систем
